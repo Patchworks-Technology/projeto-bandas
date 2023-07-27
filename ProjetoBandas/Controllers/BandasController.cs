@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoBandas.Entidades;
+using ProjetoBandas.Response;
 
 namespace ProjetoBandas.Controllers
 {
@@ -8,34 +9,50 @@ namespace ProjetoBandas.Controllers
     [ApiController]
     public class BandasController : ControllerBase
     {
-        [HttpGet]
-        public List<Banda> Get()
+        private readonly BandasContext _context;
+
+        public BandasController(BandasContext context)
         {
-            return BandasContext.Bandas;
+            _context = context;
         }
 
-        [HttpGet("ByName")]
-        public Banda GetByName(string nome)
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return BandasContext.Bandas.FirstOrDefault(b => b.Nome == nome);
+            var response = new JsonBaseResponse<List<Banda>>
+            {
+                Data = _context.Bandas.ToList()
+            };
+
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         [HttpPost]
-        public void Post([FromBody] Banda banda)
+        public async Task<IActionResult> Post([FromBody] Banda banda)
         {
-
-            //TODO: CRIAR VALIDACAO
-            //// RESULT ERROR
-
-            var lastId = BandasContext.Bandas.OrderByDescending(b => b.Id).Take(1).First().Id;
+            var lastId = _context.Bandas.OrderByDescending(b => b.Id).Take(1).First().Id;
             banda.Id = lastId + 1;
-            BandasContext.Bandas.Add(banda);
+            _context.Bandas.Add(banda);
+
+            return StatusCode(StatusCodes.Status200OK);
+        }
+
+        [HttpGet("Buscar")]
+        public async Task<IActionResult> GetByName(string nome)
+        {
+            var response = new JsonBaseResponse<List<Banda>>
+            {
+                Data = _context.Bandas.Where(b => b.Nome == nome).ToList(),
+            };
+
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         [HttpPut]
-        public void Put(int id, [FromBody] Banda banda)
+        public async Task<IActionResult> Put(int id, [FromBody] Banda banda)
         {
-            var b = BandasContext.Bandas.FirstOrDefault(b => b.Id == id);
+            var b = _context.Bandas.FirstOrDefault(b => b.Id == id);
 
             if (b == null)
                 throw new Exception("Id de banda invalido");
@@ -45,17 +62,22 @@ namespace ProjetoBandas.Controllers
 
             if (banda.AnoFormacao != null)
                 b.AnoFormacao = banda.AnoFormacao;
+
+            return StatusCode(StatusCodes.Status200OK);
+
         }
 
         [HttpDelete()]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var b = BandasContext.Bandas.FirstOrDefault(b => b.Id == id);
+            var b = _context.Bandas.FirstOrDefault(b => b.Id == id);
 
             if (b == null)
                 throw new Exception("Id de banda invalido");
 
-            BandasContext.Bandas.Remove(b);
+            _context.Bandas.Remove(b);
+
+            return StatusCode(StatusCodes.Status200OK);
         }
 
     }

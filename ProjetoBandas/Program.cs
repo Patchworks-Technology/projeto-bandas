@@ -1,5 +1,15 @@
 using ProjetoBandas;
 using ProjetoBandas.Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,16 +20,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<BandasContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BandasContext")));
+builder.Services.AddDbContext<BandasContext>(options => options.UseInMemoryDatabase("BandasContext"));
+
 var app = builder.Build();
 
-BandasContext.Bandas = new List<Banda>()
+using (var scope = app.Services.CreateScope())
 {
+    var services = scope.ServiceProvider;
 
-    new Banda{ Id = 1, Nome = "Metallica", AnoFormacao = DateTime.Now.AddYears(-20) },
-    new Banda{ Id = 2, Nome = "Iron Maiden", AnoFormacao = DateTime.Now.AddYears(-22) },
-    new Banda{ Id = 3, Nome = "Deep Purple", AnoFormacao = DateTime.Now.AddYears(-25) }
-};
-
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

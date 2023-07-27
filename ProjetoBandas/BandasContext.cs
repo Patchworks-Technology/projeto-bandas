@@ -1,9 +1,12 @@
-﻿using ProjetoBandas.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoBandas.Entidades;
 
 namespace ProjetoBandas
 {
-    public static class BandasContext
+    public class BandasContext : DbContext
     {
-        public static List<Banda> Bandas { get; set; }
+        public BandasContext(DbContextOptions<BandasContext> options) : base(options) { }
+
+        public DbSet<Banda> Bandas { get; set; }
     }
 }
