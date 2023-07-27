@@ -8,5 +8,6 @@ namespace ProjetoBandas
         public BandasContext(DbContextOptions<BandasContext> options) : base(options) { }
 
         public DbSet<Banda> Bandas { get; set; }
+        public DbSet<Album> Albuns { get; set; }
     }
 }

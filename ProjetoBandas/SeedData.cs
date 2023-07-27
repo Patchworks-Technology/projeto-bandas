@@ -28,7 +28,7 @@ namespace ProjetoBandas
             }
 
 
-            using (var context = new AlbunsContext(serviceProvider.GetRequiredService<DbContextOptions<AlbunsContext>>()))
+            using (var context = new BandasContext(serviceProvider.GetRequiredService<DbContextOptions<BandasContext>>()))
             {
                 if (context.Albuns.Any())
                 {

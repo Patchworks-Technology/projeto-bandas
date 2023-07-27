@@ -10,9 +10,9 @@ namespace ProjetoBandas.Controllers
     public class AlbunsController : ControllerBase
     {
 
-        private readonly AlbunsContext _context;
+        private readonly BandasContext _context;
 
-        public AlbunsController(AlbunsContext context)
+        public AlbunsController(BandasContext context)
         {
             _context = context;
         }
