@@ -32,7 +32,7 @@ namespace ProjetoBandas.Migrations
                    Id = table.Column<int>(type: "int", nullable: false)
                        .Annotation("SqlServer:Identity", "1, 1"),
                    Nome = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                   //Artista = table.Column<Banda>(type:"nvchar(30)", maxLength: 30, nullable: true),
+                   //Artista = table.Column<Banda>(type:"nvchar(30)", maxLength: 30, nullable: true),  FK talvez?
                    AnoLancamento = table.Column<DateTime>(type: "datetime2", nullable: true),
                    NumeroFaixas = table.Column<int>(type: "int", nullable: true),
                },

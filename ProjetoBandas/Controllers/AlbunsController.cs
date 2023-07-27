@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoBandas.Entidades;
+using ProjetoBandas.Response;
 
 namespace ProjetoBandas.Controllers
 {
@@ -8,54 +9,75 @@ namespace ProjetoBandas.Controllers
     [ApiController]
     public class AlbunsController : ControllerBase
     {
-        [HttpGet]
-        public List<Album> Get()
+
+        private readonly AlbunsContext _context;
+
+        public AlbunsController(AlbunsContext context)
         {
-            return AlbunsContext.Albuns;
+            _context = context;
         }
 
-        [HttpGet("ByName")]
-        public Album GetByName(string nome)
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return AlbunsContext.Albuns.FirstOrDefault(a => a.Nome == nome);
+            var response = new JsonBaseResponse<List<Album>>
+            {
+                Data = _context.Albuns.ToList()
+            };
+
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [HttpGet("Buscar Album")]
+        public async Task<IActionResult> GetByName(string nome)
+        {
+            var response = new JsonBaseResponse<List<Album>>
+            {
+                Data = _context.Albuns.Where(a => a.Nome == nome).ToList(),
+            };
+
+            return StatusCode(StatusCodes.Status200OK, response);
         }
 
         [HttpPost]
-        public void Post([FromBody] Album album)
+        public async Task<IActionResult> Post([FromBody] Album album)
         {
-
-            //TODO: CRIAR VALIDACAO
-            // RESULT ERROR
-
-            var lastId = AlbunsContext.Albuns.OrderByDescending(a => a.Id).Take(1).First().Id;
+            var lastId = _context.Albuns.OrderByDescending(a => a.Id).Take(1).First().Id;
             album.Id = lastId + 1;
-            AlbunsContext.Albuns.Add(album);
+            _context.Albuns.Add(album);
+
+            return StatusCode(StatusCodes.Status200OK);
         }
 
         [HttpPut]
-        public void Put(int id, [FromBody] Album album)
+        public async Task<IActionResult> Put(int id, [FromBody] Album album)
         {
-            var a = AlbunsContext.Albuns.FirstOrDefault(a => a.Id == id);
+            var a = _context.Albuns.FirstOrDefault(a => a.Id == id);
 
             if (a == null)
-                throw new Exception("Id de banda invalido");
+                throw new Exception("Id do album invalido");
 
             if (!string.IsNullOrEmpty(album.Nome))
                 a.Nome = album.Nome;
 
             if (album.AnoLancamento != null)
                 a.AnoLancamento = album.AnoLancamento;
+
+            return StatusCode(StatusCodes.Status200OK);
+
         }
 
         [HttpDelete()]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var a = AlbunsContext.Albuns.FirstOrDefault(a => a.Id == id);
+            var a = _context.Albuns.FirstOrDefault(a => a.Id == id);
 
             if (a == null)
-                throw new Exception("Id do album invalido");
+                throw new Exception("Id de album invalido");
 
-            AlbunsContext.Albuns.Remove(a);
+            _context.Albuns.Remove(a);
+
+            return StatusCode(StatusCodes.Status200OK);
         }
 
     }

@@ -28,9 +28,24 @@ namespace ProjetoBandas
             }
 
 
-                    new Album { Id = 1, Nome = "Killers", AnoLancamento = DateTime.Now.AddYears(-20), NumeroFaixas = 8 };
-                    new Album { Id = 2, Nome = "Maiden Japan", AnoLancamento = DateTime.Now.AddYears(-22), NumeroFaixas = 6 };
-                    new Album { Id = 3, Nome = "A Matter of Life and Death", AnoLancamento = DateTime.Now.AddYears(-25), NumeroFaixas = 10 };
+            using (var context = new AlbunsContext(serviceProvider.GetRequiredService<DbContextOptions<AlbunsContext>>()))
+            {
+                if (context.Albuns.Any())
+                {
+                    return;   // DB has been seeded
+                }
+
+                context.Albuns.AddRange(
+
+                   new Album { Id = 1, Nome = "Killers", AnoLancamento = DateTime.Now.AddYears(-20), NumeroFaixas = 8 },
+                   new Album { Id = 2, Nome = "Maiden Japan", AnoLancamento = DateTime.Now.AddYears(-22), NumeroFaixas = 6 },
+                   new Album { Id = 3, Nome = "A Matter of Life and Death", AnoLancamento = DateTime.Now.AddYears(-25), NumeroFaixas = 10 }
+                
+                   );
+
+
+                context.SaveChanges();
+            }                 
 
                
             

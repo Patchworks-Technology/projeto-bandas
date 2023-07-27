@@ -1,12 +1,14 @@
-﻿using ProjetoBandas.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoBandas.Entidades;
 
 
 
 namespace ProjetoBandas
 {
-    public static class AlbunsContext
+    public class AlbunsContext : DbContext
     {
-        public static List<Album> Albuns { get; set; }
+        public AlbunsContext(DbContextOptions<AlbunsContext> options) : base(options) { }
 
+        public DbSet<Album> Albuns { get; set; }
     }
 }
