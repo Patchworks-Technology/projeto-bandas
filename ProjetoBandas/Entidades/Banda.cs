@@ -10,7 +10,6 @@ namespace ProjetoBandas.Entidades
         [MaxLength(30)]
         public string? Nome { get; set; }
 
-
         public DateTime? AnoFormacao { get; set; }
 
     }

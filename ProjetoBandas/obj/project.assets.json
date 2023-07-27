@@ -8738,19 +8738,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mseki\\.nuget\\packages\\": {}
+    "C:\\Users\\AI X CORPORATION\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repositorios\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
+      "projectUniqueName": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
       "projectName": "ProjetoBandas",
-      "projectPath": "D:\\Repositorios\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
-      "packagesPath": "C:\\Users\\mseki\\.nuget\\packages\\",
-      "outputPath": "D:\\Repositorios\\projeto-bandas\\ProjetoBandas\\obj\\",
+      "projectPath": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
+      "packagesPath": "C:\\Users\\AI X CORPORATION\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mseki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AI X CORPORATION\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8758,7 +8763,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8831,7 +8836,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -8840,7 +8845,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "O pacote 'Microsoft.AspNet.WebApi.Core 5.2.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net6.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
       "targetGraphs": [
         "net6.0"
