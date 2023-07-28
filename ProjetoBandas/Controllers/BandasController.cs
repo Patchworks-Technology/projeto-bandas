@@ -35,10 +35,11 @@ namespace ProjetoBandas.Controllers
             banda.Id = lastId + 1;
             _context.Bandas.Add(banda);
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
         }
 
-        [HttpGet("Buscar")]
+        [HttpGet("BuscarBanda")]
         public async Task<IActionResult> GetByName(string nome)
         {
             var response = new JsonBaseResponse<List<Banda>>
@@ -63,6 +64,7 @@ namespace ProjetoBandas.Controllers
             if (banda.AnoFormacao != null)
                 b.AnoFormacao = banda.AnoFormacao;
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
 
         }
@@ -76,6 +78,7 @@ namespace ProjetoBandas.Controllers
                 throw new Exception("Id de banda invalido");
 
             _context.Bandas.Remove(b);
+            _context.SaveChanges();
 
             return StatusCode(StatusCodes.Status200OK);
         }

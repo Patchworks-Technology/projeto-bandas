@@ -28,7 +28,7 @@ namespace ProjetoBandas.Controllers
             return StatusCode(StatusCodes.Status200OK, response);
         }
 
-        [HttpGet("Buscar Album")]
+        [HttpGet("BuscarAlbum")]
         public async Task<IActionResult> GetByName(string nome)
         {
             var response = new JsonBaseResponse<List<Album>>
@@ -46,6 +46,7 @@ namespace ProjetoBandas.Controllers
             album.Id = lastId + 1;
             _context.Albuns.Add(album);
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
         }
 
@@ -63,6 +64,7 @@ namespace ProjetoBandas.Controllers
             if (album.AnoLancamento != null)
                 a.AnoLancamento = album.AnoLancamento;
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
 
         }
@@ -77,6 +79,7 @@ namespace ProjetoBandas.Controllers
 
             _context.Albuns.Remove(a);
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
         }
 

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj": {}
+    "C:\\Users\\thoto\\OneDrive\\Documentos\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj": {
+    "C:\\Users\\thoto\\OneDrive\\Documentos\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
+        "projectUniqueName": "C:\\Users\\thoto\\OneDrive\\Documentos\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
         "projectName": "ProjetoBandas",
-        "projectPath": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
-        "packagesPath": "C:\\Users\\AI X CORPORATION\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AI X CORPORATION\\Documents\\GitHub\\projeto-bandas\\ProjetoBandas\\obj\\",
+        "projectPath": "C:\\Users\\thoto\\OneDrive\\Documentos\\GitHub\\projeto-bandas\\ProjetoBandas\\ProjetoBandas.csproj",
+        "packagesPath": "C:\\Users\\thoto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thoto\\OneDrive\\Documentos\\GitHub\\projeto-bandas\\ProjetoBandas\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AI X CORPORATION\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\thoto\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -99,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
