@@ -36,10 +36,11 @@ namespace ProjetoBandas.Controllers
             _context.Bandas.Add(banda);
             _context.SaveChanges();
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
         }
 
-        [HttpGet("Buscar")]
+        [HttpGet("BuscarBanda")]
         public async Task<IActionResult> GetByName(string nome)
         {
             var response = new JsonBaseResponse<List<Banda>>
