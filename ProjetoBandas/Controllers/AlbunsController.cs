@@ -45,6 +45,7 @@ namespace ProjetoBandas.Controllers
             var lastId = _context.Albuns.OrderByDescending(a => a.Id).Take(1).First().Id;
             album.Id = lastId + 1;
             _context.Albuns.Add(album);
+            _context.SaveChanges();
 
             return StatusCode(StatusCodes.Status200OK);
         }
@@ -62,7 +63,9 @@ namespace ProjetoBandas.Controllers
 
             if (album.AnoLancamento != null)
                 a.AnoLancamento = album.AnoLancamento;
-
+            
+            
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
 
         }
@@ -76,6 +79,7 @@ namespace ProjetoBandas.Controllers
                 throw new Exception("Id de album invalido");
 
             _context.Albuns.Remove(a);
+            _context.SaveChanges();
 
             return StatusCode(StatusCodes.Status200OK);
         }

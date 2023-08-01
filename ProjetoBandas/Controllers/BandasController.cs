@@ -34,6 +34,7 @@ namespace ProjetoBandas.Controllers
             var lastId = _context.Bandas.OrderByDescending(b => b.Id).Take(1).First().Id;
             banda.Id = lastId + 1;
             _context.Bandas.Add(banda);
+            _context.SaveChanges();
 
             return StatusCode(StatusCodes.Status200OK);
         }
@@ -63,6 +64,7 @@ namespace ProjetoBandas.Controllers
             if (banda.AnoFormacao != null)
                 b.AnoFormacao = banda.AnoFormacao;
 
+            _context.SaveChanges();
             return StatusCode(StatusCodes.Status200OK);
 
         }
@@ -76,6 +78,7 @@ namespace ProjetoBandas.Controllers
                 throw new Exception("Id de banda invalido");
 
             _context.Bandas.Remove(b);
+            _context.SaveChanges();
 
             return StatusCode(StatusCodes.Status200OK);
         }
